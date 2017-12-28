@@ -1,4 +1,4 @@
-""" This module contains code related to
+""" This is a solution to an exercise from
 
 Think Python, 2nd Edition
 by Allen Downey
