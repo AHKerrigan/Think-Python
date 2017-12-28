@@ -1,4 +1,4 @@
-""" This module contains a code example related to
+""" This module contains code related to
 
 Think Python, 2nd Edition
 by Allen Downey
