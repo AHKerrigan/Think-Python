@@ -22,4 +22,4 @@ def ack(m, n):
 		return ack(m - 1, ack(m, n-1))
 
 
-print(ack(5,6))
+print(ack(3,4))
