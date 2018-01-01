@@ -21,7 +21,7 @@ def estimate_pi():
 	"""Estimates pi using Ramanujan's formula to an error of less than 1e-15
 	"""
 
-	within_epsilon = False # Sentinal variable for the requisit error.
+	within_epsilon = False # Sentinel variable for the requisit error.
 	epsilon = 1e-15
 	sigma = 0.0 # The infinite series will be its own value, for simplicity
 	constant = (2 * math.sqrt(2)) / 9801 # The constant that multiplies sigma
