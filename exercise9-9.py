@@ -20,7 +20,7 @@ would have happened 8 times over all. So the question is, how old am I now?”
 """
 
 def is_reversed(a, b):
-	"""Takes two integersd as inputs and determines if they are 
+	"""Takes two integers as inputs and determines if they are 
 	reverses of each other"""
 
 	# We convert the inputs to strings to make it easier to manipulate
@@ -29,7 +29,47 @@ def is_reversed(a, b):
 	bstr = str(b)
 
 	# We first use zfille to get the two strings to the same size
-	if len(a) > len(b):
+	if len(astr) > len(bstr):
 		bstr = bstr.zfill(len(astr))
-	if len(a) < len(b):
+	if len(astr) < len(bstr):
 		astr = astr.zfill(len(bstr))
+
+	return astr == bstr[::-1]
+
+def search_ages():
+	"""Searches for solutions to the problem
+	"""
+
+	# Seems like a reasonable place to start
+	child_start_age = 0
+	mom_start_age = 16
+	child_age = 0
+	mom_age = 16
+	true_age = 0
+
+	reverse_count = 0
+
+	while mom_start_age < 150:
+		for i in range(151 - mom_start_age):
+			if(is_reversed(child_age, mom_age)):
+				reverse_count = reverse_count + 1
+				if reverse_count == 6:
+					true_age = child_age
+			child_age = child_age + 1
+			mom_age = mom_age + 1
+
+		if reverse_count == 8:
+			print(true_age)
+			break
+
+		mom_start_age = mom_start_age + 1
+		mom_age = mom_start_age
+		child_age = 0
+
+
+
+
+
+
+
+search_ages()
