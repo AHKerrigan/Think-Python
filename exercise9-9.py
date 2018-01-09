@@ -49,7 +49,10 @@ def search_ages():
 
 	reverse_count = 0
 
+	# We iterate through mother starting ages
 	while mom_start_age < 150:
+
+		# For each starting age, we have to compare all possible ages (up until 150 is reasonable)
 		for i in range(151 - mom_start_age):
 			if(is_reversed(child_age, mom_age)):
 				reverse_count = reverse_count + 1
