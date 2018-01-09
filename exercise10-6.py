@@ -13,14 +13,33 @@ Two words are anagrams if you can rearrange the letters from one to spell the ot
 Write a function called is_anagram that takes two strings and returns True if they are
 anagrams."""
 
+import time
+
 def is_anagram(word1, word2):
 	"""Takes two strings as input and returns true if they
 	are anagrams of each other, false otherwise"""
 
 	word2_list = list(word2)
 
+
+	# The strategy is whittle down a list version of the second word
+	# by matching them to a letter from word one
 	for c1 in word1:
 		for i in range((len(word2_list) )):
-			print(i)
+			if word2_list[i] == c1:
+				del word2_list[i]
+				break
 
-is_anagram("stuff", "things")
+	# The words are anagrams if the list we created finds a partner for each element
+	# and therefore is completely stripped
+	return word2_list == []
+
+def is_anagram_book(word1, word2):
+	"""The solution from the book, for reference"""
+	return sorted(word1) == sorted(word2)
+
+start_time = time.time()
+
+print(is_anagram("stuff", "tuffs"))
+print(start_time)
+print(time.time())
