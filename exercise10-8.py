@@ -8,7 +8,7 @@ Copyright 2015 Allen Downey
 
 License: http://creativecommons.org/licenses/by/4.0/
 
-Exercise 10-7:
+Exercise 10-8:
 Use random integers to estimate the probability that two people in the same room
 will share a birthday given a room of 23 people """
 
@@ -34,7 +34,7 @@ def birthday_simulation():
 
 	for i in range(23):
 
-		# Populates the list of birthdays with numbers between 1 and 265
+		# Populates the list of birthdays with numbers between 1 and 365
 		# We ignore leapyears
 		birthdays.append(random.randint(1, 365))
 
