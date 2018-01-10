@@ -38,8 +38,5 @@ def is_anagram_book(word1, word2):
 	"""The solution from the book, for reference"""
 	return sorted(word1) == sorted(word2)
 
-start_time = time.time()
 
-print(is_anagram("stuff", "tuffs"))
-print(start_time)
-print(time.time())
+print(is_anagram("stuff", "ftufs")
