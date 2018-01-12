@@ -17,7 +17,7 @@ def in_bisect(t, n):
 	"""Takes in a list and sorts it, then returns the index of n
 	if its contained in at list, returns None if it is not
 
-	Keyword arguments:
+	Keyword Arguments:
 	t: list to search through
 	n: value to search for
 

@@ -7,7 +7,7 @@ http://thinkpython2.com
 Copyright 2015 Allen Downey
 
 License: http://creativecommons.org/licenses/by/4.0/
-
+s
 Exercise 10-9:
 Write a function that reads the file words.txt and builds a list with one element per
 word. Write two versions of this function, one using the append method and the
@@ -35,4 +35,7 @@ def file_list_idiom(file):
 		t = t + [line]
 	return t
 
+# print(len(file_list_append("words.txt")))
 print(len(file_list_idiom("words.txt")))
+
+# The idiom version is slower because the operator creates and entire new list
