@@ -140,5 +140,3 @@ def find_reverse_pairs(file):
 			print(line, line[::-1])
 
 find_reverse_pairs('words.txt')
-
-
