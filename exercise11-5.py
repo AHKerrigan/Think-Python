@@ -48,20 +48,41 @@ def rotate_word(phrase, count):
 
 	return new_phrase
 
+def rotate_pairs(word, word_dict):
+	""" Takes a word and a word dictionary, then prints out every words that exist
+	in the word dictionary that rae a rotate pair with that word
+	"""
+
+	# Holds the current word being looked for so we don't have to rotate twice
+	current_word = ''
+
+	for i in range(1, 21):
+		current_word = rotate_word(word, i)
+		if current_word in word_dict:
+			print(word, " ", current_word)
 
 
-def print_rotate_pairs(file):
-	"""Takes a wordlist filename as input and prints all rotate pairs in te
+def file_to_dict(fin): 
+	"""Takes a file as input and returns  a dictionary version of that file
+	"""
+
+	dicted_file = dict()
+	for line in fin:
+		dicted_file[line.strip()] = ''
+	return dicted_file
+
+
+def find_rotate_pairs(wordlist):
+	"""Takes a wordlist filename as input and prints all rotate pairs in thbe
 	word list
 
-	Keyword Arguments: 
-	file: a string that represents a filename"""
+	Keyword Arguments:
+	file: The file we will be printing rotate pairs from
+	"""
 
-	fin = open(file)
-	checked_words = dict()
+	word_dictionary = file_to_dict(open(wordlist))
 
+	for item in word_dictionary:
+		rotate_pairs(item, word_dictionary)
 
-	for item in fin:
-		if item in checked_words:
-			continue
-		
+find_rotate_pairs("words.txt")
