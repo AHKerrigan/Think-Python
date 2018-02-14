@@ -85,4 +85,5 @@ def find_rotate_pairs(wordlist):
 	for item in word_dictionary:
 		rotate_pairs(item, word_dictionary)
 
-find_rotate_pairs("words.txt")
+if __name__ == '__main__':
+	find_rotate_pairs("words.txt")
