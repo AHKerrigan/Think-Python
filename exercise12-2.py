@@ -41,6 +41,37 @@ def tupled_string(phrase):
 
 	return ts
 
+def tuple_sort(t):
+	"""Because by default sorting a tuple turns it into a list, this function
+	takes a tuple as input, sorts it, turns it back into a tuple, then returns 
+	that sorted tuple"""
+
+	listed_t = sorted(t)
+	return_t = tuple()
+
+	for element in listed_t:
+		return_t += (element,)
+
+	return return_t
+
+def sorted_key_list(d):
+	"""Takes a dictionary as input, then puts the keys into a list of lists,
+	then sorts the list by size of the sublists
+
+	Keyword Arguments:
+	d: The dictionary taken as input
+
+	Return argument:
+	l: the list of lists containing the keys
+	"""
+
+	l = []
+	for element in d:
+		l.append(d[element])
+	l.sort(key=len, reverse = True)
+	return l
+
+
 def print_anagram_sets(wordlist):
 	"""Takes a word list in the form of a string and prints out all
 	the sets of words that are anagrams."""
@@ -52,16 +83,18 @@ def print_anagram_sets(wordlist):
 	current_word = tuple()
 
 	for line in fin:
-		current_word = sorted(tupled_string(line.strip()))
-		print(type(current_word))
+		current_word = tuple_sort(tupled_string(line.strip()))
 
 		if current_word not in anagram_dictionary:
-			anagram_dictionary[current_word] = [line.stip()]
+			anagram_dictionary[current_word] = [line.strip()]
 		else:
-			anagram_dictionary[current_word].append(line)
+			anagram_dictionary[current_word].append(line.strip())
 
-	for element in anagram_dictionary:
-		if len(anagram_dictionary[element]) > 1:
-			print(anagram_dictionary[element])
+	# Turns the dictionary into a sorted list, then prints the anagram sets
 
-print(type(sorted(tupled_string("Hi"))))
+	for sets in sorted_key_list(anagram_dictionary):
+		if len(sets) > 1:
+			print(sets)
+
+if __name__ == '__main__':
+	print_anagram_sets("words.txt")
