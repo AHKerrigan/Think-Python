@@ -24,11 +24,8 @@ followed by the second longest, and so on.
 3. In Scrabble, a “bingo” is when you play all seven tiles in your rack, along with a
 letter on the board, to form an eight-letter word. What collection of eight letters
 forms the most possible bingos? Hint: there are seven.
-Solution: http://thinkpython2.com/code/anagram_sets.py.
 """
 
-# TODO: Sorting a tuple turns it into a list, and therefore current_word
-# cannot be hashed, figure out solution
 def tupled_string(phrase):
 	"""Takes a string as input and returns a tuple with each
 	letter as an element"""

@@ -14,6 +14,7 @@ tionary. It doesn’t matter what the values are. Then you can use the in operat
 fast way to check whether a string is in the dictionary.
 """
 
+
 def to_dictionary(file):
 	"""Takes a file as input and returns a dictionary containing
 	each line as a key
