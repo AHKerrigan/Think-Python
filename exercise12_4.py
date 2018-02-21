@@ -24,29 +24,12 @@ the word spite, then we take the e off the end, we’re left with spit, we take 
 we’re left with pit, it, and I.
 """
 
-import exercise10-1
+from exercise11_1 import to_dictionary
 
 
 ##TODO: 
-##Determine if we need reducible children
-##Test the import
-##Complete is_reducible
 ##Create fuction for finding largest word in a dictionary
 
-def reducible_children(word, word_dict):
-	"""Takes a string as input and returns a list of all words
-	that can be created by removing one letter"
-
-	Keyword Arguments:
-	word: the string being reduced
-	wordlist: the dictionary of words to check from
-
-	Return Arguments:
-	l: the list of reduced words"""
-
-	current_word = ''
-
-	return "Placeholder"
 
 def is_reducible(word, word_dict):
 	"""Takes a string and a dictionary as input and returns true 
@@ -58,17 +41,52 @@ def is_reducible(word, word_dict):
 	word_dict: a dictionary containing valid words"""
 
 
-	if "a" not in string and "i" not in string:
+	# The base cases, as well as checking the memo
+
+	if "a" not in word and "i" not in word:
 		return False
-	else:
+	if word in reducible_words:
+		return True
+	if word == 'a' or word == 'i':
 		return True
 
+	# The function is recursive, looking for one reduction, then
+	# checking until the base case or a memoized word is found
+	word_length = len(word)
+	for i in range(word_length):
+		current_reduction = word[0:i] + word[i + 1:word_length]
+		if current_reduction in word_dict and is_reducible(current_reduction, word_dict):
+			reducible_words[word] = word_length
+			return True
 
+def most_reducible(wordlist):
+	"""Takes in a wordlist file as input and prints the longest 
+	word that can be reduced into other words one letter at a time
 
+	Keyword Arguments:
+	wordlist: a string that represents the list of words we will
+	look from
+	"""
 
-
-
-
-if __name__ == "__main__":
+	# We create a memo for reducible words since is_reducible is 
+	# recursive. The keys are the words and the values are the 
+	# number of characters
 	global reducible_words
 	reducible_words = dict()
+	reducible_words['a'], reducible_words['i'] = 1, 1
+	
+	word_dict = to_dictionary(wordlist)
+	for line in word_dict:
+		is_reducible(line, word_dict)
+
+	# Varible that will search the memo for the longest word
+	current_greatest = ''
+	for word in reducible_words:
+		if reducible_words[word] > len(current_greatest):
+			current_greatest = word
+	print(current_greatest)
+
+if __name__ == "__main__":
+	most_reducible("words.txt")
+
+	

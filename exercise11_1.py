@@ -32,5 +32,9 @@ def to_dictionary(file):
 		d[line.strip()] = ''
 	return d
 
-d = to_dictionary('words.txt')
-print('exercise' in d)
+
+if __name__ == "__main__":
+
+	d = to_dictionary('words.txt')
+	print("hello")
+	print('exercise' in d)
