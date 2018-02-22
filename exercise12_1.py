@@ -50,6 +50,19 @@ def swap_tuple_list(l):
 		swapped_list.append((y, x))
 	return swapped_list
 
+def sorted_histogram(d):
+	"""Returns a list representing a sorted version of a histogram
+
+	Keyword Arguments: 
+	d: a dictionary representing a histogram"""
+
+	listed_histogram = dictionary_to_tuple_list(d)
+
+	# Swaps that list the sorts it
+	# Could be done without swapping with an additional package, but 
+	# We will stick with the book
+	return swap_tuple_list(sorted(swap_tuple_list(listed_histogram), reverse=True))
+
 
 def most_frequent(phrase):
 	"""Takes a string as input and prints the letters in
@@ -57,14 +70,11 @@ def most_frequent(phrase):
 
 	# Converst the string into a sorted list of tuples, containing each
 	# letter and their frequency
-	listed_histogram = dictionary_to_tuple_list(histogram(phrase))
+	hist = histogram(phrase)
 
-	# Swaps that list the sorts it
-	# Could be done without swapping with an additional package, but 
-	# We will stick with the book
-	listed_histogram = sorted(swap_tuple_list(listed_histogram), reverse=True)
+	hist = sorted_histogram(hist)
 
-	for frequency, letter in listed_histogram:
+	for letter, frequency in hist:
 		print(letter, frequency)
 
 

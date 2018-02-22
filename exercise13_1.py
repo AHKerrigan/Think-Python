@@ -30,5 +30,35 @@ def file_to_list(filename):
 		l.append(line.strip())
 	return l
 
-print(string.whitespace)
-print(string.punctuation)
+def file_to_words(filename):
+	"""Takes a string representing a filename as input and ouputs
+	a list with each seperate word as a element of a list
+
+	Keyword Arguments:
+	filename: a string representing the name of a file
+
+	Return Arguments:
+	l: the list containing words from the file"""
+	
+	line_list = file_to_list(filename)
+	l = []
+
+	# A string that holds all punctuation and whitespace characters
+	# that we don't want
+	strippables = string.whitespace + string.punctuation
+
+	# Goes through each line, splits by whitespace, then removes
+	# punctuation before putting the words into a list
+	for line in line_list:
+		line.replace("-", " ")
+		for word in line.split():
+			for symbol in strippables:
+				word = word.strip(symbol)
+			l.append(word.lower())
+	return l
+
+if __name__ == "__main__":
+
+	print(file_to_words("sciencefiction.txt"))
+	
+
